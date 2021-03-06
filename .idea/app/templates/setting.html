@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+		<div class="row" style="margin-bottom: 50px">
+      <div class="col-25">
+        <label for="fname">Min trs:</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="minlite" name="mintrs" value="{{minlite}}" placeholder="Enter min trs">
+      </div>
+      <div class="col-25">
+        <button class="w3-btn" onclick="sendTrsLighting('minlite', 'mintrs')">Set</button>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 50px">
+      <div class="col-25">
+        <label for="fname">Max trs:</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="maxlite" name="maxtrs" value="{{maxlite}}" placeholder="Enter max trs">
+      </div>
+      <div class="col-25">
+        <button class="w3-btn" onclick="sendTrsLighting('maxlite', 'maxtrs')">Set</button>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 50px">
+      <div class="col-25">
+        <label for="fname">Cron start:</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="cronstart" name="cronstart" value="{{cronstart}}" placeholder="Enter cron start">
+      </div>
+      <div class="col-25">
+        <button id="cronstart_btn" onclick="updateCron('cronstart', '1')" class="w3-btn">Set</button>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 50px">
+      <div class="col-25">
+        <label for="fname">Cron stop:</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="cronstop" name="cronstop" value="{{cronstop}}" placeholder="Enter cron stop">
+      </div>
+      <div class="col-25">
+        <button id="cronstop_btn" onclick="updateCron('cronstop', '0')" class="w3-btn">Set</button>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

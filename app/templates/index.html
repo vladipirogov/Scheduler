@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div align="center" class="row" style="margin-bottom: 50px">
+    <button id="load_1_btn" onclick="sendData('load_1=1')" class="ctrlbtn onn">ON</button>
+    <button id="load_0_btn" onclick="sendData('load_0=1')" class="ctrlbtn off">OFF</button>
+
+    <div style="margin-top: 50px">
+        <label class="switch">
+            <input id = "auto_mode_check" type="checkbox" checked>
+            <span class="slider round"></span>
+        </label>
+    </div>
+</div>
+
+<script>
+(function($) {
+
+    var auto = {{auto}};
+    console.log('auto = ' + auto);
+
+    if(auto == 0) {
+        activate();
+        $('#auto_mode_check').attr("checked", false);
+    } else if (auto == 1){
+        deactivate();
+         $('#auto_mode_check').attr("checked", true);
+    }
+
+    function activate() {
+        $('#load_0_btn').attr("disabled", false);
+        $('#load_1_btn').attr("disabled", false);
+        $('#load_0_btn').removeClass('inactive');
+        $('#load_1_btn').removeClass('inactive');
+    }
+
+    function deactivate() {
+        $('#load_0_btn').attr("disabled", true);
+        $('#load_1_btn').attr("disabled", true);
+        $('#load_0_btn').addClass('inactive');
+        $('#load_1_btn').addClass('inactive');
+    }
+
+    $('#auto_mode_check').change(function() {
+        if($(this).is(":checked")) {
+           deactivate();
+            json = {name : 'auto', value : 1};
+            send('/update-setting', json, 'PUT');
+            sendData('automode=1');
+        } else {
+            activate();
+            json = {name : 'auto', value : 0};
+            send('/update-setting', json, 'PUT');
+            sendData('automode=0');
+        }
+    })
+})(jQuery);
+</script>
+{% endblock %}

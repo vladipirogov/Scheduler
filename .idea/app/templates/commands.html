@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+		<div class="row" style="margin-bottom: 50px">
+      <div class="col-25">
+        <label for="fcommand">Command:</label>
+      </div>
+      <div class="col-50">
+        <input type="text" id="commands" name="mintrs" placeholder="Command">
+      </div>
+      <div class="col-25">
+        <button class="w3-btn" onclick="sendDataById('commands')">Send</button>
+      </div>
+    </div>
+
+    <div class="row">
+         <div class="col-25">
+        <label for="ftimeliteenab">:)</label>
+      </div>
+         <div class="col-25">
+        <button class="w3-btn" onclick="sendData('timeliteenab=1')">timeliteenab=1</button>
+      </div>
+    </div>
+
+    <div class="row">
+         <div class="col-25">
+        <label id="run_status" for="ftimeliteenab">{{run_job}}</label>
+      </div>
+         <div class="col-25">
+        <button class="w3-btn" onclick="sendByUrl('/reschedule-tasks', 'POST'); $('#run_status').text('1')">reschedule-tasks</button>
+      </div>
+    </div>
+
+    <div class="row">
+         <div class="col-25">
+        <label for="ftimeliteenab">:)</label>
+      </div>
+         <div class="col-25">
+        <button class="w3-btn" onclick="sendByUrl('/pause-tasks', 'POST'); $('#run_status').text('2')">pause-tasks</button>
+      </div>
+    </div>
+
+    <div class="row">
+         <div class="col-25">
+        <label for="ftimeliteenab">:)</label>
+      </div>
+         <div class="col-25">
+        <button class="w3-btn" onclick="sendByUrl('/resume-tasks', 'POST'); $('#run_status').text('1')">resume-tasks</button>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
